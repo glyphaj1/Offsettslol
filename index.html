@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vxo6</title>
+    <link rel="icon" href="redrblx.png" type="image/x-icon" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <meta property="og:title" content="xo6 Offsets">
+    <meta property="og:description" content="xo6 Offsets">
+    <meta property="og:type" content="website">
+    
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+      * {
+        font-family: 'Inter', sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html, body {
+        height: 100%;
+        width: 100%;
+      }
+
+      body {
+        background: linear-gradient(to bottom, #0a0a0a 0%, #1a0505 50%, #0f0f0f 100%);
+        color: #ffffff;
+        min-height: 100vh;
+      }
+
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #dc2626;
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #1a1a1a;
+      }
+
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 40px 20px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: '';
+        position: absolute;
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(circle, rgba(220, 38, 38, 0.15) 0%, transparent 70%);
+        border-radius: 50%;
+        top: -200px;
+        left: 10%;
+        filter: blur(40px);
+      }
+
+      .hero::after {
+        content: '';
+        position: absolute;
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(circle, rgba(220, 38, 38, 0.1) 0%, transparent 70%);
+        border-radius: 50%;
+        bottom: -300px;
+        right: 5%;
+        filter: blur(50px);
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 1;
+        text-align: center;
+        max-width: 900px;
+      }
+
+      .hero-badge {
+        display: inline-block;
+        padding: 8px 16px;
+        background: rgba(220, 38, 38, 0.1);
+        border: 1px solid rgba(220, 38, 38, 0.3);
+        border-radius: 50px;
+        font-size: 12px;
+        font-weight: 600;
+        color: #dc2626;
+        margin-bottom: 24px;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+      }
+
+      .hero h1 {
+        font-size: 72px;
+        font-weight: 800;
+        line-height: 1.1;
+        margin-bottom: 24px;
+        letter-spacing: -2px;
+        color: #ffffff;
+      }
+
+      .hero h1 span:first-child {
+        color: #ffffff;
+      }
+
+      .hero h1 span:last-child {
+        color: #dc2626;
+      }
+
+      .hero-description {
+        font-size: 18px;
+        color: rgba(255, 255, 255, 0.6);
+        line-height: 1.6;
+        margin-bottom: 48px;
+      }
+
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        width: 100%;
+      }
+
+      @media (max-width: 1024px) {
+        .features-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .features-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .feature-card {
+        position: relative;
+        background: rgba(20, 20, 20, 0.4);
+        border: 1px solid rgba(220, 38, 38, 0.2);
+        border-radius: 16px;
+        padding: 32px;
+        cursor: pointer;
+        transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+        text-decoration: none;
+        color: inherit;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        backdrop-filter: blur(20px);
+        overflow: hidden;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
+
+      .feature-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(220, 38, 38, 0.1), transparent);
+        transition: left 0.5s ease;
+      }
+
+      .feature-card:hover {
+        border-color: rgba(220, 38, 38, 0.5);
+        background: rgba(30, 20, 20, 0.5);
+        transform: translateY(-8px);
+        box-shadow: 0 16px 40px rgba(220, 38, 38, 0.15);
+      }
+
+      .feature-card:hover::before {
+        left: 100%;
+      }
+
+      .feature-icon {
+        width: 48px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(220, 38, 38, 0.1);
+        border-radius: 12px;
+        font-size: 24px;
+        color: #dc2626;
+      }
+
+      .feature-title {
+        font-size: 16px;
+        font-weight: 700;
+        letter-spacing: -0.3px;
+      }
+
+      .feature-description {
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.5);
+        line-height: 1.5;
+      }
+
+      .stats-section {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 36px 48px;
+        background: linear-gradient(135deg, rgba(220, 38, 38, 0.12) 0%, rgba(220, 38, 38, 0.05) 100%);
+        border: 1.5px solid rgba(220, 38, 38, 0.25);
+        border-radius: 14px;
+        margin: 48px 0;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 8px 32px rgba(220, 38, 38, 0.08), inset 0 1px 0 rgba(220, 38, 38, 0.1);
+        transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+        cursor: pointer;
+      }
+
+      .stats-section:hover {
+        border-color: rgba(220, 38, 38, 0.5);
+        background: linear-gradient(135deg, rgba(220, 38, 38, 0.18) 0%, rgba(220, 38, 38, 0.1) 100%);
+        box-shadow: 0 16px 40px rgba(220, 38, 38, 0.15), inset 0 1px 0 rgba(220, 38, 38, 0.2);
+      }
+
+      .stat {
+        text-align: center;
+        position: relative;
+      }
+
+      .stat-number {
+        font-size: 14px;
+        font-weight: 600;
+        color: #dc2626;
+        display: inline;
+      }
+
+      .stat-label {
+        font-size: 15px;
+        color: rgba(255, 255, 255, 0.8);
+        text-transform: none;
+        letter-spacing: 0.4px;
+        font-weight: 500;
+      }
+
+      .main-wrapper {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .footer-section {
+        text-align: center;
+        padding: 80px 20px 60px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .footer-divider {
+        width: 60px;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, #dc2626, transparent);
+        margin: 0 auto 32px;
+      }
+
+      .discord-link {
+        font-size: 16px;
+        font-weight: 600;
+        color: #dc2626;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        display: inline-block;
+      }
+
+      .discord-link:hover {
+        color: #ef4444;
+        transform: translateY(-2px);
+      }
+
+      .copyright {
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.4);
+        margin-top: 24px;
+        letter-spacing: 0.3px;
+      }
+
+      .version-badge {
+        font-size: 13px;
+        font-weight: 600;
+        color: #dc2626;
+        margin-top: 16px;
+        letter-spacing: 0.2px;
+      }
+
+      .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(8px);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+        animation: fadeIn 0.3s ease;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      .modal-overlay.active {
+        display: flex;
+      }
+
+      .modal-box {
+        background: rgba(8, 8, 8, 0.85);
+        border: 2px solid rgba(220, 38, 38, 0.7);
+        border-radius: 28px;
+        padding: 60px 50px;
+        position: relative;
+        width: 90%;
+        max-width: 520px;
+        text-align: center;
+        backdrop-filter: blur(50px);
+        box-shadow: 0 30px 80px rgba(220, 38, 38, 0.4), 0 0 100px rgba(220, 38, 38, 0.2);
+        animation: slideUp 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+      }
+
+      @keyframes slideUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .modal-header {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+        margin-bottom: 24px;
+      }
+
+      .modal-icon {
+        width: 56px;
+        height: 56px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, rgba(220, 38, 38, 0.25) 0%, rgba(220, 38, 38, 0.1) 100%);
+        border: 1.5px solid rgba(220, 38, 38, 0.4);
+        border-radius: 14px;
+        font-size: 32px;
+        color: #dc2626;
+      }
+
+      .modal-title {
+        font-size: 28px;
+        font-weight: 800;
+        letter-spacing: -0.5px;
+        background: linear-gradient(135deg, #ff4444 0%, #dc2626 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .modal-divider {
+        width: 60px;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, #dc2626, transparent);
+        margin: 0 auto 32px;
+      }
+
+      .modal-text {
+        font-size: 16px;
+        color: rgba(255, 255, 255, 0.8);
+        line-height: 1.6;
+        margin-bottom: 28px;
+      }
+
+      .modal-version-display {
+        background: linear-gradient(135deg, rgba(220, 38, 38, 0.1) 0%, rgba(220, 38, 38, 0.02) 100%);
+        border: 1.5px solid rgba(220, 38, 38, 0.4);
+        border-radius: 14px;
+        padding: 20px 24px;
+        margin-bottom: 28px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        backdrop-filter: blur(10px);
+        box-shadow: inset 0 1px 10px rgba(220, 38, 38, 0.08);
+      }
+
+      .modal-version-label {
+        font-size: 13px;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.6);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .modal-version-value {
+        font-size: 14px;
+        font-weight: 700;
+        color: #dc2626;
+        font-family: 'Courier New', monospace;
+      }
+
+      .modal-close {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        width: 40px;
+        height: 40px;
+        background: rgba(220, 38, 38, 0.1);
+        border: 1.5px solid rgba(220, 38, 38, 0.3);
+        border-radius: 10px;
+        color: #dc2626;
+        font-size: 20px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+      }
+
+      .modal-close:hover {
+        background: rgba(220, 38, 38, 0.25);
+        border-color: rgba(220, 38, 38, 0.6);
+        color: #ef4444;
+        transform: rotate(90deg);
+      }
+
+      .modal-button {
+        background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+        border: 1px solid rgba(220, 38, 38, 0.5);
+        color: #ffffff;
+        padding: 14px 32px;
+        border-radius: 10px;
+        font-size: 14px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .modal-button:hover {
+        background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+        box-shadow: 0 12px 30px rgba(220, 38, 38, 0.4);
+        transform: translateY(-2px);
+      }
+
+      .modal-button:active {
+        transform: translateY(0);
+      }
+
+      @media (max-width: 768px) {
+        .hero h1 {
+          font-size: 44px;
+        }
+
+        .hero-description {
+          font-size: 16px;
+        }
+
+        .features-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .stats-section {
+          flex-direction: column;
+          gap: 24px;
+        }
+
+        .footer-section {
+          padding: 60px 20px 40px;
+        }
+
+        .modal-box {
+          padding: 40px 30px;
+          max-width: 90%;
+        }
+
+        .modal-title {
+          font-size: 24px;
+        }
+
+        .modal-text {
+          font-size: 14px;
+        }
+      }
+    </style>
+
+    <script>
+      (function() {
+        let devToolsOpen = false;
+        let devToolsWarned = false;
+
+        function checkDevTools() {
+          const widthThreshold = window.outerWidth - window.innerWidth > 160;
+          const heightThreshold = window.outerHeight - window.innerHeight > 160;
+          return widthThreshold || heightThreshold;
+        }
+
+        setInterval(function() {
+          if (checkDevTools()) {
+            devToolsOpen = true;
+            handleDevToolsOpen();
+          } else {
+            devToolsOpen = false;
+            devToolsWarned = false;
+          }
+        }, 500);
+
+        function handleDevToolsOpen() {
+          if (!devToolsWarned) {
+            devToolsWarned = true;
+            document.body.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100vh;background:linear-gradient(to bottom, #0a0a0a 0%, #1a0505 50%, #0f0f0f 100%);color:#fff;font-family:Inter,sans-serif;"><div style="text-align:center;"><h1 style="font-size:2.5rem;margin-bottom:20px;">Developer Tools Detected</h1><p style="font-size:1.1rem;opacity:0.7;">Developer tools are not permitted on this site.</p><p style="font-size:0.9rem;opacity:0.5;margin-top:20px;">Please close your developer tools and refresh the page.</p></div></div>';
+          }
+        }
+
+        document.addEventListener('keydown', function(e) {
+          if (e.keyCode === 123) {
+            e.preventDefault();
+            return false;
+          }
+          if (e.ctrlKey && e.shiftKey && e.keyCode === 73) {
+            e.preventDefault();
+            return false;
+          }
+          if (e.ctrlKey && e.shiftKey && e.keyCode === 67) {
+            e.preventDefault();
+            return false;
+          }
+          if (e.ctrlKey && e.shiftKey && e.keyCode === 74) {
+            e.preventDefault();
+            return false;
+          }
+          if (e.ctrlKey && e.shiftKey && e.keyCode === 75) {
+            e.preventDefault();
+            return false;
+          }
+          if (e.ctrlKey && e.keyCode === 85) {
+            e.preventDefault();
+            return false;
+          }
+          if (e.metaKey && e.altKey && e.keyCode === 73) {
+            e.preventDefault();
+            return false;
+          }
+          if (e.metaKey && e.altKey && e.keyCode === 74) {
+            e.preventDefault();
+            return false;
+          }
+          if (e.metaKey && e.altKey && e.keyCode === 85) {
+            e.preventDefault();
+            return false;
+          }
+        }, true);
+
+        document.addEventListener('contextmenu', function(e) {
+          e.preventDefault();
+          return false;
+        }, true);
+
+        window.console.log = function() {};
+        window.console.warn = function() {};
+        window.console.error = function() {};
+        window.console.debug = function() {};
+
+        setInterval(function() {
+          debugger;
+        }, 1000);
+
+        window.eval = function() {};
+        window.Function = function() {};
+      })();
+
+      document.addEventListener('DOMContentLoaded', function() {
+        const versionCard = document.querySelector('[data-version-card]');
+        const modalOverlay = document.getElementById('modalOverlay');
+        const modalClose = document.getElementById('modalClose');
+        const copyButton = document.getElementById('copyButton');
+        const versionValue = 'version-7a4a5d7d1fb3449f';
+
+        versionCard.addEventListener('click', function(e) {
+          e.preventDefault();
+          modalOverlay.classList.add('active');
+        });
+
+        modalClose.addEventListener('click', function() {
+          modalOverlay.classList.remove('active');
+        });
+
+        modalOverlay.addEventListener('click', function(e) {
+          if (e.target === modalOverlay) {
+            modalOverlay.classList.remove('active');
+          }
+        });
+
+        copyButton.addEventListener('click', function() {
+          const versionText = document.querySelector('.modal-version-value').textContent;
+          navigator.clipboard.writeText(versionText).then(function() {
+            const originalText = copyButton.textContent;
+            copyButton.textContent = 'Copied!';
+            copyButton.style.background = 'linear-gradient(135deg, #16a34a 0%, #15803d 100%)';
+            setTimeout(function() {
+              copyButton.textContent = originalText;
+              copyButton.style.background = '';
+            }, 2000);
+          }).catch(function(err) {
+            console.error('Failed to copy:', err);
+          });
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div class="hero">
+      <div class="main-wrapper">
+        <div class="hero-content">
+          <div class="hero-badge">Roblox</div>
+          <h1>Offsets <span class="hero-highlight">API</span></h1>
+          <p class="hero-description">An easy and friendly solution to game offsets. Integrate seamlessly with C++ headers or JSON data formats.</p>
+          <div class="features-grid">
+            <a href="https://raw.githubusercontent.com/glyphaj1/Offsettslol/refs/heads/main/offsets/offsets.hpp" target="_blank" class="feature-card">
+              <div class="feature-icon">
+                <i class="ph ph-file-cpp"></i>
+              </div>
+              <h3 class="feature-title">offsets.hpp</h3>
+              <p class="feature-description">C++ header file format for seamless integration</p>
+            </a>
+            <a href="https://raw.githubusercontent.com/glyphaj1/Offsettslol/refs/heads/main/offsets/offsets.json" target="_blank" class="feature-card">
+              <div class="feature-icon">
+                <i class="ph ph-brackets-curly"></i>
+              </div>
+              <h3 class="feature-title">offsets.json</h3>
+              <p class="feature-description">JSON format data for universal compatibility</p>
+            </a>
+
+            <button class="feature-card" data-version-card style="border: none; cursor: pointer;">
+              <div class="feature-icon">
+                <i class="ph ph-tag"></i>
+              </div>
+              <h3 class="feature-title">Version</h3>
+              <p class="feature-description">Check current version and updates</p>
+            </button>
+          </div>
+
+          <div class="stats-section">
+            <div class="stat">
+              <div class="stat-label">Roblox Version: <span class="stat-number">version-7a4a5d7d1fb3449f</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-section">
+      <div class="main-wrapper">
+        <div class="footer-divider"></div>
+        <a href="https://discord.gg/NCcTwpNQ2S" class="discord-link">discord.gg/NCcTwpNQ2S</a>
+
+      </div>
+    </div>
+
+    <div class="modal-overlay" id="modalOverlay">
+      <div class="modal-box">
+        <button class="modal-close" id="modalClose">✕</button>
+        <div class="modal-header">
+          <div class="modal-icon">
+            <i class="ph ph-tag"></i>
+          </div>
+          <h2 class="modal-title">Version</h2>
+        </div>
+        <div class="modal-divider"></div>
+        <p class="modal-text">Current system version information</p>
+        <div class="modal-version-display">
+          <span class="modal-version-label">Version:</span>
+          <span class="modal-version-value">version-7a4a5d7d1fb3449f</span>
+        </div>
+        <button class="modal-button" id="copyButton">Copy Version</button>
+      </div>
+    </div>
+  </body>
+</html>
